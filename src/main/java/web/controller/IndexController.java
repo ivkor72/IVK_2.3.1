@@ -1,0 +1,30 @@
+package web.controller;
+
+import application.dao.UserDao;
+import application.model.User;
+import application.service.UserService;
+import application.service.UserServiceImp;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.GetMapping;
+
+import java.util.ArrayList;
+import java.util.List;
+
+@Controller
+public class IndexController {
+
+
+	private final UserService userService = new UserServiceImp();
+
+
+    @GetMapping(value = "/")
+	public String showAllUsers(Model model) {
+	List<User> allUsers = userService.getAllUsers();
+	model.addAttribute("users", allUsers);
+		return "index";
+	}
+	
+}
