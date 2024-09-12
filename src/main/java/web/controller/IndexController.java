@@ -17,7 +17,11 @@ import java.util.List;
 public class IndexController {
 
 
-	private final UserService userService = new UserServiceImp();
+	private final UserService userService;
+
+    public IndexController(UserService userService) {
+        this.userService = userService;
+    }
 
 
     @GetMapping(value = "/")

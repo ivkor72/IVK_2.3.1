@@ -1,6 +1,8 @@
 package application.dao;
 
 import application.model.User;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
@@ -11,10 +13,10 @@ import java.util.List;
 @Repository
 public class UserDaoImp implements UserDao {
 
-    @PersistenceContext
-    private  EntityManager em;
 
-  
+    @PersistenceContext
+    private EntityManager em;
+
 
     @Override
     public void addUser(User user) {
