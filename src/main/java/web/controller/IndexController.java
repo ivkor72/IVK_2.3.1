@@ -5,6 +5,7 @@ import application.model.User;
 import application.service.UserService;
 import application.service.UserServiceImp;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
@@ -17,11 +18,12 @@ import java.util.List;
 public class IndexController {
 
 
-	private final UserService userService;
+	private UserService userService;
 
-    public IndexController(UserService userService) {
-        this.userService = userService;
-    }
+
+//    public IndexController(UserService userService) {
+//        this.userService = userService;
+//    }
 
 
     @GetMapping(value = "/")
