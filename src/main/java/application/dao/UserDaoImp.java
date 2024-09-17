@@ -1,11 +1,14 @@
 package application.dao;
 
+import application.config.AppConfig;
 import application.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
 import javax.persistence.PersistenceContext;
 import java.util.List;
 
@@ -13,12 +16,14 @@ import java.util.List;
 @Repository
 public class UserDaoImp implements UserDao {
 
+    @Autowired
+    private EntityManagerFactory emf;
 
     @PersistenceContext
-    private EntityManager em;
+    private EntityManager em = emf.createEntityManager();
 
-//    @Autowired
-//    private LocalContainerEntityManagerFactoryBean em;
+
+
 
     @Override
     public void addUser(User user) {
@@ -46,8 +51,8 @@ public class UserDaoImp implements UserDao {
         return em.find(User.class, id);
     }
 
-
     @Override
+    @Transactional
     public List<User> getAllUsers() {
         return em.createQuery("from User", User.class).getResultList();
     }
