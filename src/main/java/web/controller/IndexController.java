@@ -17,19 +17,13 @@ import java.util.List;
 @Controller
 public class IndexController {
 
-	@Autowired
-	private UserService userService;
 
-
-//    public IndexController(UserService userService) {
-//        this.userService = userService;
-//    }
 
 
     @GetMapping(value = "/")
 	public String showAllUsers(Model model) {
-	List<User> allUsers = userService.getAllUsers();
-	model.addAttribute("users", allUsers);
+//	List<User> allUsers = userService.getAllUsers();
+//	model.addAttribute("users", allUsers);
 		return "index";
 	}
 	

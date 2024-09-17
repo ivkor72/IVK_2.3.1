@@ -16,11 +16,12 @@ import java.util.List;
 @Repository
 public class UserDaoImp implements UserDao {
 
-    @Autowired
-    private EntityManagerFactory emf;
+//    @Autowired
+//    private EntityManagerFactory emf;
 
     @PersistenceContext
-    private EntityManager em = emf.createEntityManager();
+    private EntityManager em;
+
 
 
 
@@ -42,7 +43,7 @@ public class UserDaoImp implements UserDao {
 
     @Override
     public void updateUser(User user) {
-    user = em.merge(user);
+    em.merge(user);
     em.flush();
     }
 
