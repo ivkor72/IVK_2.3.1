@@ -1,9 +1,12 @@
-package application.dao;
+package hiber.application.dao;
 
-import application.config.AppConfig;
-import application.model.User;
+import hiber.application.config.AppConfig;
+import hiber.application.model.User;
+import hiber.application.service.UserService;
+import hiber.web.config.WebConfig;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -16,20 +19,37 @@ import java.util.List;
 @Repository
 public class UserDaoImp implements UserDao {
 
+//    AnnotationConfigApplicationContext context =
+//            new AnnotationConfigApplicationContext(AppConfig.class);
+
+
+
+
+    private EntityManagerFactory emf;
+
+   @PersistenceContext
+   private EntityManager em;
+
+   @Autowired
+   public EntityManager getEntityManager(EntityManagerFactory emf) {
+            return emf.createEntityManager();
+   }
+
+
 //    @Autowired
-//    private EntityManagerFactory emf;
+//    private AppConfig appConfig;
 
-    @PersistenceContext
-    private EntityManager em;
-
-
-
+    @Autowired
+    private UserService userService;
 
 
     @Override
     public void addUser(User user) {
+        em = getEntityManager(emf);
+        em.getTransaction().begin();
     em.persist(user);
     em.flush();
+        em.getTransaction().commit();
     }
 
     @Override

@@ -1,12 +1,10 @@
-package application.model;
+package hiber.application.model;
 
-
-import org.springframework.context.annotation.Bean;
 
 import javax.persistence.*;
 
 @Entity
-@Table(name = "users")
+@Table(name = "users_table")
 public class User {
 
     @Id

@@ -1,4 +1,4 @@
-package web.config;
+package hiber.web.config;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
@@ -12,19 +12,22 @@ import org.thymeleaf.spring5.templateresolver.SpringResourceTemplateResolver;
 import org.thymeleaf.spring5.view.ThymeleafViewResolver;
 import org.thymeleaf.templatemode.StandardTemplateModeHandlers;
 import org.thymeleaf.templateresolver.ClassLoaderTemplateResolver;
+import org.thymeleaf.templateresolver.ITemplateResolver;
 
 import java.nio.charset.StandardCharsets;
 
 @Configuration
 @EnableWebMvc
-@ComponentScan("web")
+@ComponentScan("hiber.web")
 public class WebConfig implements WebMvcConfigurer {
 
-//    private final ApplicationContext applicationContext;
-//
-//    public WebConfig(ApplicationContext applicationContext) {
-//        this.applicationContext = applicationContext;
-//    }
+
+
+   private final ApplicationContext applicationContext;
+
+    public WebConfig(ApplicationContext applicationContext) {
+        this.applicationContext = applicationContext;
+    }
 
     @Bean
     public ClassLoaderTemplateResolver htmlTemplateResolver(){
@@ -39,16 +42,17 @@ public class WebConfig implements WebMvcConfigurer {
 //    @Bean
 //    public SpringResourceTemplateResolver templateResolver() {
 //        SpringResourceTemplateResolver templateResolver = new SpringResourceTemplateResolver();
+//
 //        templateResolver.setApplicationContext(applicationContext);
 //        templateResolver.setPrefix("/WEB-INF/pages/");
 //        templateResolver.setSuffix(".html");
 //        return templateResolver;
 //    }
-
+//
 //    @Bean
 //    public SpringTemplateEngine templateEngine() {
 //        SpringTemplateEngine templateEngine = new SpringTemplateEngine();
-//        templateEngine.setTemplateResolver(templateResolver());
+//        templateEngine.setTemplateResolver((ITemplateResolver) templateResolver());
 //        templateEngine.setEnableSpringELCompiler(true);
 //        return templateEngine;
 //    }

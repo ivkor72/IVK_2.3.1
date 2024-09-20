@@ -1,8 +1,6 @@
-package application.service;
+package hiber.application.service;
 
-import application.model.User;
-import org.springframework.beans.factory.annotation.Autowired;
-import web.controller.IndexController;
+import hiber.application.model.User;
 
 import java.util.List;
 

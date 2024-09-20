@@ -1,13 +1,10 @@
-package application.service;
+package hiber.application.service;
 
-import application.dao.UserDao;
-import application.dao.UserDaoImp;
-import application.model.User;
+import hiber.application.dao.UserDao;
+import hiber.application.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import web.controller.IndexController;
 
 import java.util.List;
 
@@ -16,6 +13,7 @@ import java.util.List;
 @Transactional
 public class UserServiceImp implements UserService {
 
+    @Autowired
     private final UserDao userDao;
 
     public UserServiceImp(UserDao userDao) {
