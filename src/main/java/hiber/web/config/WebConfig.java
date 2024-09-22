@@ -18,7 +18,7 @@ import java.nio.charset.StandardCharsets;
 
 @Configuration
 @EnableWebMvc
-@ComponentScan("hiber.web")
+//@ComponentScan("hiber.web")
 public class WebConfig implements WebMvcConfigurer {
 
 

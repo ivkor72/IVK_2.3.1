@@ -15,12 +15,7 @@ import hiber.application.model.User;
 @Controller
 public class IndexController {
 
-//	AnnotationConfigApplicationContext context =
-//			new AnnotationConfigApplicationContext(WebConfig.class);
 
-//	public AnnotationConfigApplicationContext getContext() {
-//		return context;
-//	}
 
 	private UserService userService;
 

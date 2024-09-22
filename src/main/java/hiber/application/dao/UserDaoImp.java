@@ -35,14 +35,6 @@ public class UserDaoImp implements UserDao {
             return emf.createEntityManager();
    }
 
-
-//    @Autowired
-//    private AppConfig appConfig;
-
-    @Autowired
-    private UserService userService;
-
-
     @Override
     public void addUser(User user) {
         em = getEntityManager(emf);
