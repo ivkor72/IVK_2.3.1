@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import hiber.application.model.User;
 
+import java.util.List;
+
 @Controller
 public class IndexController {
 
@@ -21,8 +23,8 @@ public class IndexController {
 
     @GetMapping(value = "/")
 	public String showAllUsers(Model model) {
-//	List<User> allUsers = userService.getAllUsers();
-//	model.addAttribute("users", allUsers);
+	List<User> allUsers = userService.getAllUsers();
+	model.addAttribute("users", allUsers);
 		return "index";
 	}
 	
