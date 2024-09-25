@@ -21,7 +21,7 @@ public class IndexController {
 
 	private UserService userService;
 
-    @GetMapping(value = "/")
+    @RequestMapping(value = "/")
 	public String showAllUsers(Model model) {
 	List<User> allUsers = userService.getAllUsers();
 	model.addAttribute("users", allUsers);

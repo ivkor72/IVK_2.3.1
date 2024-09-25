@@ -29,39 +29,40 @@ public class WebConfig implements WebMvcConfigurer {
         this.applicationContext = applicationContext;
     }
 
-    @Bean
-    public ClassLoaderTemplateResolver htmlTemplateResolver(){
-        ClassLoaderTemplateResolver emailTemplateResolver = new ClassLoaderTemplateResolver();
-        emailTemplateResolver.setPrefix("/WEB-INF/pages/");
-        emailTemplateResolver.setSuffix(".html");
-        emailTemplateResolver.setTemplateMode(StandardTemplateModeHandlers.HTML5.getTemplateModeName());
-        emailTemplateResolver.setCharacterEncoding(StandardCharsets.UTF_8.name());
-        return emailTemplateResolver;
-    }
-}
 //    @Bean
-//    public SpringResourceTemplateResolver templateResolver() {
-//        SpringResourceTemplateResolver templateResolver = new SpringResourceTemplateResolver();
-//
-//        templateResolver.setApplicationContext(applicationContext);
-//        templateResolver.setPrefix("/WEB-INF/pages/");
-//        templateResolver.setSuffix(".html");
-//        return templateResolver;
-//    }
-//
-//    @Bean
-//    public SpringTemplateEngine templateEngine() {
-//        SpringTemplateEngine templateEngine = new SpringTemplateEngine();
-//        templateEngine.setTemplateResolver((ITemplateResolver) templateResolver());
-//        templateEngine.setEnableSpringELCompiler(true);
-//        return templateEngine;
-//    }
-//
-//
-//    @Override
-//    public void configureViewResolvers(ViewResolverRegistry registry) {
-//        ThymeleafViewResolver resolver = new ThymeleafViewResolver();
-//        resolver.setTemplateEngine(templateEngine());
-//        registry.viewResolver(resolver);
+//    public ClassLoaderTemplateResolver htmlTemplateResolver(){
+//        ClassLoaderTemplateResolver emailTemplateResolver = new ClassLoaderTemplateResolver();
+//        emailTemplateResolver.setPrefix("/WEB-INF/pages/");
+//        emailTemplateResolver.setSuffix(".html");
+//        emailTemplateResolver.setTemplateMode(StandardTemplateModeHandlers.HTML5.getTemplateModeName());
+//        emailTemplateResolver.setCharacterEncoding(StandardCharsets.UTF_8.name());
+//        return emailTemplateResolver;
 //    }
 //}
+    @Bean
+    public SpringResourceTemplateResolver templateResolver() {
+        SpringResourceTemplateResolver templateResolver = new SpringResourceTemplateResolver();
+
+        templateResolver.setApplicationContext(applicationContext);
+        templateResolver.setPrefix("/WEB-INF/pages/");
+        templateResolver.setSuffix(".html");
+
+        return templateResolver;
+    }
+
+    @Bean
+    public SpringTemplateEngine templateEngine() {
+        SpringTemplateEngine templateEngine = new SpringTemplateEngine();
+        templateEngine.setTemplateResolver((ITemplateResolver) templateResolver());
+        templateEngine.setEnableSpringELCompiler(true);
+        return templateEngine;
+    }
+
+
+    @Override
+    public void configureViewResolvers(ViewResolverRegistry registry) {
+        ThymeleafViewResolver resolver = new ThymeleafViewResolver();
+        resolver.setTemplateEngine(templateEngine());
+        registry.viewResolver(resolver);
+    }
+}

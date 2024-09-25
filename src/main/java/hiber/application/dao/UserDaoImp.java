@@ -19,8 +19,8 @@ import java.util.List;
 @Repository
 public class UserDaoImp implements UserDao {
 
-//    AnnotationConfigApplicationContext context =
-//            new AnnotationConfigApplicationContext(AppConfig.class);
+    AnnotationConfigApplicationContext context =
+            new AnnotationConfigApplicationContext(AppConfig.class);
 
 
 
